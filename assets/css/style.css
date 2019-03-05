@@ -1,0 +1,162 @@
+/* fullscreen map: http://www.d3noob.org/2014/02/make-your-leafletjs-map-full-screen.html */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #map {
+  height: 100%;
+  width: 100%;
+}
+
+h1, h2 {
+  margin: 10px 0 0 0;
+}
+
+#forward {
+  margin-left: 10px;
+}
+
+#reverse {
+  margin-right: 10px;
+}
+
+.fa, .fas {
+  color: #333;
+}
+
+.fa-chevron-circle-right,
+.fa-chevron-circle-left {
+  /* 18px to match zoomhome icon size */
+  font-size: 18px;
+}
+
+/* update zoomehome icon color to match rest of page */
+.leaflet-bar a {
+  color: #333;
+}
+
+.leaflet-bottom.leaflet-left {
+  text-align: center;
+}
+
+.leaflet-container {
+  color: #333;
+}
+
+.leaflet-popup-content p {
+  margin: 0.2em 0;
+}
+
+.leaflet-touch .leaflet-control-layers-toggle {
+  /* width and height default to 44px */
+  width: 30px;
+  height: 30px
+}
+
+.leaflet-retina .leaflet-control-layers-toggle {
+  /* background-size defaults to 28px 28px */
+  background-size: 22px 22px;
+}
+
+.legend-container {
+  /* background-color: rgba(0, 0, 0, 0.35) */
+  background-color: rgba(255, 255, 255, 0.9);
+  /* set to match leaflet controls */;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  /* set to match leaflet controls */
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.legend-container p {
+  margin: 5px 0;
+}
+
+.panel-container {
+  /* background-color: rgba(0, 0, 0, 0.35); */
+  background-color: rgba(255, 255, 255, 0.9);
+  /* set to match leaflet controls */
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  /* set to match leaflet controls */
+  border-radius: 5px;
+  /* height: 440px; */
+  width: 383px;
+}
+
+.panel-container p {
+  font-size: 1.5em;
+  margin: 5px 0;
+}
+
+#panel-header {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  padding: 0 15px 10px 15px;
+}
+
+#panel-header h1 {
+  font-size: 2.5em;
+  /* margin: 10px 0 0 0; */
+}
+
+#panel-header small {
+  font-size: 1em;
+  margin: 0;
+}
+
+#panel-injected {
+  padding: 0px 15px;
+}
+
+#panel-injected h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+#panel-injected h2 {
+  font-size: 2em;
+  margin: 5px 0 0 0;
+}
+
+#panel-injected h3 {
+  font-size: 1.5em;
+  margin: 0 0 10px 0;
+}
+
+.range-slider {
+  vertical-align: middle;
+  width: 200px;
+}
+
+.sequence-control-container {
+  /* background-color: rgba(0, 0, 0, 0.35); */
+  background-color: rgba(255, 255, 255, 0.9);
+  /* set to match leaflet controls */
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  /* set to match leaflet controls */
+  border-radius: 5px;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  vertical-align: center;
+}
+
+.skip {
+  /* set to match leaflet controls */
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  /* display: inline; */
+  padding: 5px;
+  /* text-align: center; */
+}
+
+.skip:hover {
+  /* set to match leaflet zoomhome control */
+  background-color: rgba(244, 244, 244, 1);
+}
+
+.skip:focus {
+  /* remove default focus ring */
+  outline-style: none;
+}
