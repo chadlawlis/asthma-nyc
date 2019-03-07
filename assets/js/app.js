@@ -559,26 +559,26 @@ function createLegend (map, attributes) {
       $(legendContainer).append('<div id="temporal-legend"></div>');
 
       // Start attribute legend SVG string
-      // height really should match "min" value in circle object (should update "min" value to 63px)
-      // and "cy" value in jQuery .attr() method should be updated too (heigh - 1 for radius so 62px for height of 63px)
-      // but need to fidget more with styling ... this looks good enough as is for now
-      var svg = '<svg id="attribute-legend" width="180px" height="63px">';
+      // "attribute-legend" height really should match "min" value in circle object
+      // and "cy" value in jQuery .attr() method should be updated too (height - 1 (-1 for circleMarker radius))
+      // but the values below look good
+      var svg = '<svg id="attribute-legend" width="80px" height="54px">';
 
       // Create circle object containing circle names (max, mean, min) and text "y" coordinates as values for spacing on legend
       var circles = {
-        max: 20,
-        mean: 40,
-        min: 60
+        max: 14,
+        mean: 32,
+        min: 50
       };
 
       // Loop to add each circle and text to SVG string
       for (var circle in circles) {
         // Instantiate SVG string
         // Assign id value based on current value of array
-        svg += '<circle class="legend-circle" id="' + circle + '" fill="#6b6b7f" fill-opacity="0.6" stroke="#6b6b7f" cx="30"/>';
+        svg += '<circle class="legend-circle" id="' + circle + '" fill="#6b6b7f" fill-opacity="0.6" stroke="#6b6b7f" cx="27"/>';
 
         // Add empty <text> element with unique id for each circle to the SVG string
-        svg += '<text id="' + circle + '-text" x="65" y="' + circles[circle] + '"></text>';
+        svg += '<text id="' + circle + '-text" x="59" y="' + circles[circle] + '"></text>';
       }
 
       // Close SVG string *outside* of loop so only closed once
@@ -610,7 +610,7 @@ function createLegend (map, attributes) {
 function updateLegend (map, attribute) {
   // Create legend content HTML string
   var year = attribute.split('_')[3];
-  var legendContent = '<p>Asthma hospitalization rate in <b>' + year + '</b></p>';
+  var legendContent = '<p><b>Asthma hospitalization rate</b><br>per 10k residents</p><h1>' + year + '</h1>';
 
   // Replace legend content
   $('#temporal-legend').html(legendContent);
@@ -624,13 +624,15 @@ function updateLegend (map, attribute) {
 
     // Assign SVG "cy" and "r" values
     // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle
+    // "cy: 53 - radius" because max circleMarker radius is currently 26 * 2 = 52 diameter + 1 + 1 (for border on each side of circle) = 54
+    // 54 - 1 (for radius at base of circle) = 53
     $('#' + key).attr({
-      cy: 59 - radius,
+      cy: 53 - radius,
       r: radius
     });
 
     // Add legend text
-    $('#' + key + '-text').text(Math.round(circleValues[key] * 100) / 100 + ' per 10k residents');
+    $('#' + key + '-text').text(Math.round(circleValues[key]));
   }
 }
 
