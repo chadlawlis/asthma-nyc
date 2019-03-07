@@ -240,7 +240,7 @@ function Popup (properties, attribute, layer, radius) {
   // HTML string for use in tooltip
   this.popupContent = '<h3>' + this.uhfName + '</h3>';
   // HTML string for use as panel content
-  this.panelContent = '<h2>' + this.uhfName + '</h2><h1>' + this.aRateUhf + '</h1><p><b>City-wide:</b> ' + this.aRateCityWide + '</p><p><b>Minority:</b> ' + (this.minorityRate * 100) + '%</p><p><b>Poverty:</b> ' + this.povertyRate + '%</p>';
+  this.panelContent = '<h2>' + this.uhfName + '</h2><h1>' + this.aRateUhf + '</h1><p><b>City-wide:</b> ' + this.aRateCityWide + '</p><p><b>Minority:</b> ' + Math.round((this.minorityRate * 100)) + '%</p><p><b>Poverty:</b> ' + Math.round(this.povertyRate) + '%</p>';
 
   // Log "this.panelContent" for event listener troubleshooting
   // console.log(this.panelContent);
