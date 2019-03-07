@@ -222,8 +222,8 @@ function Popup (properties, attribute, layer, radius) {
   this.borough = this.properties.borough;
   this.aRateUhf = this.properties[attribute];
   this.year = attribute.split('_')[3]; // "a_rate_uhf_2010" -> "2010"
-  this.minorityRate = this.properties.minority_pct;
-  this.povertyRate = this.properties.poverty_pop_pct;
+  this.minorityRate = Math.round((this.properties.minority_pct * 100));
+  this.povertyRate = Math.round(this.properties.poverty_pop_pct);
 
   var aRateUhf0to4 = 'a_0to4_rate_' + attribute.split('_')[3];
   this.aRateUhf0to4 = this.properties[aRateUhf0to4];
@@ -240,7 +240,7 @@ function Popup (properties, attribute, layer, radius) {
   // HTML string for use in tooltip
   this.popupContent = '<h3>' + this.uhfName + '</h3>';
   // HTML string for use as panel content
-  this.panelContent = '<h2>' + this.uhfName + '</h2><h1>' + this.aRateUhf + '</h1><p><b>City-wide:</b> ' + this.aRateCityWide + '</p><p><b>Minority:</b> ' + Math.round((this.minorityRate * 100)) + '%</p><p><b>Poverty:</b> ' + Math.round(this.povertyRate) + '%</p>';
+  this.panelContent = '<h2>' + this.uhfName + '</h2><h1>' + this.aRateUhf + '</h1><p><b>City-wide:</b> ' + this.aRateCityWide + '</p><p><b>Minority:</b> ' + this.minorityRate + '%</p><p><b>Poverty:</b> ' + this.povertyRate + '%</p>';
 
   // Log "this.panelContent" for event listener troubleshooting
   // console.log(this.panelContent);
@@ -455,7 +455,7 @@ function updatePanelContent (map, attribute) {
       var panelContent = '<h2>' + uhf + '</h2>';
       // var year = attribute.split('_')[3];
       var aRateCityWide = 'a_rate_citywide_' + attribute.split('_')[3];
-      panelContent += '<h1>' + layer.feature.properties[attribute] + '</h1><p><b>City-wide:</b> ' + layer.feature.properties[aRateCityWide] + '</p><p><b>Minority:</b> ' + (layer.feature.properties['minority_pct'] * 100) + '%</p><p><b>Poverty:</b> ' + layer.feature.properties['poverty_pop_pct'] + '%</p>';
+      panelContent += '<h1>' + layer.feature.properties[attribute] + '</h1><p><b>City-wide:</b> ' + layer.feature.properties[aRateCityWide] + '</p><p><b>Minority:</b> ' + Math.round((layer.feature.properties['minority_pct'] * 100)) + '%</p><p><b>Poverty:</b> ' + layer.feature.properties['poverty_pop_pct'] + '%</p>';
       // Replace panel HTML with updated panelContent HTML string
       $('#panel-injected').html(panelContent);
     }
