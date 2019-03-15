@@ -1,4 +1,3 @@
-/* fullscreen map: http://www.d3noob.org/2014/02/make-your-leafletjs-map-full-screen.html */
 body {
   margin: 0;
   padding: 0;
@@ -17,6 +16,7 @@ html, body, #map {
   margin-right: 10px;
 }
 
+/* set font-awesome icon color (includes zoomehome icon) to match rest of page */
 .fa, .fas {
   color: #333;
 }
@@ -25,15 +25,6 @@ html, body, #map {
 .fa-chevron-circle-left {
   /* 18px to match zoomhome icon size */
   font-size: 18px;
-}
-
-/* update zoomehome icon color to match rest of page */
-.leaflet-bar a {
-  color: #333;
-}
-
-.leaflet-bottom.leaflet-left {
-  text-align: center;
 }
 
 .leaflet-container {
@@ -46,8 +37,8 @@ html, body, #map {
 
 .leaflet-touch .leaflet-control-layers-toggle {
   /* width and height default to 44px */
+  height: 30px;
   width: 30px;
-  height: 30px
 }
 
 .leaflet-retina .leaflet-control-layers-toggle {
@@ -56,8 +47,11 @@ html, body, #map {
 }
 
 .legend-container {
-  /* background-color: rgba(0, 0, 0, 0.35) */
-  background-color: rgba(255, 255, 255, 0.9);
+  /* fallback background precedes background */
+  background: white;
+  background: rgba(255, 255, 255, 0.9);
+  /* fallback border precedes border */
+  border: 2px solid lightgray;
   /* set to match leaflet controls */;
   border: 2px solid rgba(0, 0, 0, 0.2);
   /* set to match leaflet controls */
@@ -74,9 +68,12 @@ html, body, #map {
 }
 
 .panel-container {
-  /* background-color: rgba(0, 0, 0, 0.35); */
-  background-color: rgba(255, 255, 255, 0.9);
-  /* set to match leaflet controls */
+  /* fallback background precedes background */
+  background: white;
+  background: rgba(255, 255, 255, 0.9);
+  /* fallback border precedes border */
+  border: 2px solid lightgray;
+  /* set to match leaflet controls */;
   border: 2px solid rgba(0, 0, 0, 0.2);
   /* set to match leaflet controls */
   border-radius: 5px;
@@ -90,6 +87,8 @@ html, body, #map {
 }
 
 #panel-header {
+  /* fallback border precedes border */
+  border-bottom: 2px solid lightgray;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
   padding: 0 15px 10px 15px;
 }
@@ -129,20 +128,26 @@ html, body, #map {
 }
 
 .sequence-control-container {
-  /* background-color: rgba(0, 0, 0, 0.35); */
-  background-color: rgba(255, 255, 255, 0.9);
-  /* set to match leaflet controls */
+  /* fallback background precedes background */
+  background: white;
+  background: rgba(255, 255, 255, 0.9);
+  /* fallback border precedes border */
+  border: 2px solid lightgray;
+  /* set to match leaflet controls */;
   border: 2px solid rgba(0, 0, 0, 0.2);
   /* set to match leaflet controls */
   border-radius: 5px;
   display: block;
   padding: 10px;
   text-align: center;
-  vertical-align: center;
+  /* can't use vertical-align: center; with display: block; */
+  /* vertical-align: center; */
 }
 
 .skip {
-  /* set to match leaflet controls */
+  /* fallback border precedes border */
+  border: 2px solid lightgray;
+  /* set to match leaflet controls */;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   /* display: inline; */
@@ -151,8 +156,10 @@ html, body, #map {
 }
 
 .skip:hover {
+  /* fallback background precedes background */
+  background: lightgray;
   /* set to match leaflet zoomhome control */
-  background-color: rgba(244, 244, 244, 1);
+  background: rgba(244, 244, 244, 1);
 }
 
 .skip:focus {
