@@ -1,5 +1,5 @@
-var L; // define Leaflet variable L
-var $; // define jQuery variable $
+/* global L */ // Leaflet global alias L
+/* global $ */ // jQuery global alias $
 var uhf = '';
 
 // Define function createMap() to instantiate Leaflet map
