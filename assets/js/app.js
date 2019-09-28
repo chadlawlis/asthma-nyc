@@ -1,5 +1,5 @@
-/* global L */ // Leaflet global alias L
-/* global $ */ // jQuery global alias $
+/* global $, L */ // set global aliases: jQuery, Leaflet
+
 var uhf = '';
 
 // Define function createMap() to instantiate Leaflet map
@@ -56,18 +56,18 @@ function createMap () {
 
   // Tilesets for layer control
   var tilesets = {
-    'Base': positron,
-    'Satellite': satellite
+    Base: positron,
+    Satellite: satellite
   };
 
   // Overlay for layer control
   var overlay = {
     // 'Points': uhfPoints,
-    'Boundaries': uhfPolygons
+    Boundaries: uhfPolygons
   };
 
   // Note: can remove "overlay" to only provide option of switching between basemaps
-  L.control.layers(tilesets, overlay, {position: 'topleft'}).addTo(map);
+  L.control.layers(tilesets, overlay, { position: 'topleft' }).addTo(map);
   console.log('layers control added to map');
 
   getData(map);
@@ -290,7 +290,7 @@ function Popup (properties, attribute, layer, radius) {
         // "self.openPopup" throws error as not a function
         this.openPopup(); // https://leafletjs.com/reference-1.4.0.html#layer-openpopup
         // Thicken circleMarker stroke to provide stronger visual affordance
-        self.layer.setStyle({weight: 3});
+        self.layer.setStyle({ weight: 3 });
         // Set panel HTML content using respective Feature's panelContent property defined above
         $('#panel-injected').html(self.panelContent);
       },
@@ -299,7 +299,7 @@ function Popup (properties, attribute, layer, radius) {
         // Using "this.closePopup" for same reason as "this.openPopup" above
         this.closePopup(); // https://leafletjs.com/reference-1.4.0.html#layer-closepopup
         // Reset to default circleMarker stroke
-        self.layer.setStyle({weight: 1});
+        self.layer.setStyle({ weight: 1 });
         // $('#panel').empty(); // remove child nodes of matched elements (i.e., remove panelContent from div id='panel' on mouseout from circleMarker)
       },
       // Add click for mobile
@@ -455,7 +455,7 @@ function updatePanelContent (map, attribute) {
       var panelContent = '<h2>' + uhf + '</h2>';
       // var year = attribute.split('_')[3];
       var aRateCityWide = 'a_rate_citywide_' + attribute.split('_')[3];
-      panelContent += '<h1>' + layer.feature.properties[attribute] + '</h1><p><b>City-wide:</b> ' + layer.feature.properties[aRateCityWide] + '</p><p><b>Minority:</b> ' + Math.round((layer.feature.properties['minority_pct'] * 100)) + '%</p><p><b>Poverty:</b> ' + layer.feature.properties['poverty_pop_pct'] + '%</p>';
+      panelContent += '<h1>' + layer.feature.properties[attribute] + '</h1><p><b>City-wide:</b> ' + layer.feature.properties[aRateCityWide] + '</p><p><b>Minority:</b> ' + Math.round((layer.feature.properties.minority_pct * 100)) + '%</p><p><b>Poverty:</b> ' + layer.feature.properties.poverty_pop_pct + '%</p>';
       // Replace panel HTML with updated panelContent HTML string
       $('#panel-injected').html(panelContent);
     }
